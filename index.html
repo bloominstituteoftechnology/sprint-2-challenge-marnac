@@ -71,8 +71,37 @@
     // 👉 CHALLENGE 4
    function scrub(text, forbidden) {
     let words=text.split(" ")
-    console.log(words)
+   // console.log(words)
+   // console.log(forbidden)
+   let scrubbedText=[]
+
+
+    for(let t=0;t<words.length; t++){
+      let wordToScrub=words[t]
+      isForbidden=false
+
+      for(let f=0;f<forbidden.length; f++){
+        if(forbidden[f]=== wordToScrub){
+          isForbidden=true
+          break
+        }
+        }
+
+        if(isForbidden){
+          let xWord= ""
+          for(let i=0;i<wordToScrub.length; i++){
+            xWord+= "x"
+          }
+          scrubbedText.push(xWord)
+        }else{
+          scrubbedText.push(wordToScrub)
+        }
+      }
+      return scrubbedText.join(" ")
     }
+
+  
+    
 
 
     // 👉 CHALLENGE 5 (bonus, NOT graded)
