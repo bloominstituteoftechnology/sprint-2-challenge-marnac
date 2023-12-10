@@ -77,17 +77,15 @@
 
     // 👉 CHALLENGE 5 (bonus, NOT graded)
     function normalizePhoneNumber(num) {
-      let areaCode=[]
-      let firstThree=[]
-      let lastFour=[]
-      let spltNum= num.split("")
-      
-      areaCode=num.slice(0,3)
-      firstThree=num.slice(3,6)
-      lastFour=num.slice(6,11)
+  
+      let areaCode=num.slice(0,3)
+      let firstThree=num.slice(3,6)
+      let lastFour=num.slice(6,11)
+     
+       return `(${areaCode}) ${firstThree}-${lastFour}`
+     }
+       
     
-      return `(${areaCode}) ${firstThree}-${lastFour}`
-    }
   
       
           
