@@ -53,8 +53,24 @@
 
     // 👉 CHALLENGE 3
     function booleanize(obj) {
+      for(let key in obj){
+        let i=obj[key]
+        if(i===0){
+          obj[key]= false
+        }else if(i===1){
+          obj[key]= true
+        }else if(i===null){
+          delete obj[key]
+        }
+        if(key.length > 9){
+          return "shorten all prop names to 9 chars or less"
+        }
+      }
+        return obj
+      }
+          
 
-    }
+    
 
     // 👉 CHALLENGE 4
     function scrub(text, forbidden) {
