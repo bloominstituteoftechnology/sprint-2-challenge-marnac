@@ -5,14 +5,51 @@
   <title>Web Sprint 2 Challenge</title>
   <script id="challenge">
     // 👉 CHALLENGE 1
-    function profileActivation(profile, reason) {
-      test
+    function profileActivation(user) {
+      let account={active:user.active, reason:user.reason}
+      if(!account.active){
+        account.active= true
+        account.reason= undefined
+      }else if(account.reason === undefined){
+        return "confirm status manually"
+      }else if(typeof account.active !== "Boolean"){
+        account.active = false
+        account.reason= "Bermuda triangle"
+        
+        
+      }else{
+        account.active= false
+        account.reason= "Bermuda triangle"
+        
+      }
+      return account
+      
     }
+    
 
     // 👉 CHALLENGE 2
     function mineSweeper(grid, x, y) {
+     
+      if (x> grid.length || x<=0 || y> grid[x - 1].length || y<=0){
+        return "invalid coordinates"
+      }
+  
+      let land=grid[x-1][y-1]
+     
+       if(land === "🟥"){
+         return "🟥 💀"
+         
+        }else{
+          return "🟦 🥳"
+ 
+        }
+      }
 
-    }
+      
+      
+
+   // 🟥    🟦    🥳 💀
+
 
     // 👉 CHALLENGE 3
     function booleanize(obj) {
