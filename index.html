@@ -5,27 +5,23 @@
   <title>Web Sprint 2 Challenge</title>
   <script id="challenge">
     // 👉 CHALLENGE 1
-    function profileActivation(user) {
-      let account={active:user.active, reason:user.reason}
-      if(!account.active){
-        account.active= true
-        account.reason= undefined
-      }else if(account.reason === undefined){
+    function profileActivation(user, reason) {
+      if(!reason && user.active){
         return "confirm status manually"
-      }else if(typeof account.active !== "Boolean"){
-        account.active = false
-        account.reason= "Bermuda triangle"
-        
-        
-      }else{
-        account.active= false
-        account.reason= "Bermuda triangle"
-        
       }
-      return account
-      
+      if(user.active ){
+        user.active=false
+        user.reason=reason
+      }
+      else if(!user.active){
+        user.active=true
+        delete user.reason
+      }
+      return user 
     }
-    
+       
+     
+      
 
     // 👉 CHALLENGE 2
     function mineSweeper(grid, x, y) {
@@ -34,7 +30,7 @@
         return "invalid coordinates"
       }
   
-      let land=grid[x-1][y-1]
+      let land=grid[y-1][x-1]
      
        if(land === "🟥"){
          return "🟥 💀"
@@ -74,22 +70,8 @@
 
     // 👉 CHALLENGE 4
    function scrub(text, forbidden) {
-      xHolder=[]
-      let scrubbed=[]
-    
-      for(let t=0; t< text.length; t++){
-        for(let f=0; f<forbidden.length; f++){
-          if(text[t]!==forbidden[f]){
-            scrubbed+=text[t]
-          }else {
-            for(let x=0; x<forbidden.length;x++){
-              xHolder += x
-            }
-          }
-          scrubbed += xHolder
-        }
-      }
-      return scrubbed
+    let words=text.split(" ")
+    console.log(words)
     }
 
 
@@ -100,15 +82,14 @@
       let lastFour=[]
       let spltNum= num.split("")
       
-      for(let i=0; i<num.length; i++){
-        if(typeof num[i] !== "number"){
-          areaCode=num.slice(0,3)
-          firstThree=num.slice(3,6)
-          lastFour=num.slice(6,11)
-        }
-      }
+      areaCode=num.slice(0,3)
+      firstThree=num.slice(3,6)
+      lastFour=num.slice(6,11)
+    
       return `(${areaCode}) ${firstThree}-${lastFour}`
     }
+  
+      
           
 
 
