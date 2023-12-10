@@ -53,7 +53,7 @@
 
     // 👉 CHALLENGE 3
     function booleanize(obj) {
-      for(let key in obj){
+    for(let key in obj){
         let i=obj[key]
         if(i===0){
           obj[key]= false
@@ -73,18 +73,62 @@
     
 
     // 👉 CHALLENGE 4
-    function scrub(text, forbidden) {
-
+   function scrub(text, forbidden) {
+      xHolder=[]
+      let scrubbed=[]
+    
+      for(let t=0; t< text.length; t++){
+        for(let f=0; f<forbidden.length; f++){
+          if(text[t]!==forbidden[f]){
+            scrubbed+=text[t]
+          }else {
+            for(let x=0; x<forbidden.length;x++){
+              xHolder += x
+            }
+          }
+          scrubbed += xHolder
+        }
+      }
+      return scrubbed
     }
+
 
     // 👉 CHALLENGE 5 (bonus, NOT graded)
     function normalizePhoneNumber(num) {
-
+      let areaCode=[]
+      let firstThree=[]
+      let lastFour=[]
+      let spltNum= num.split("")
+      
+      for(let i=0; i<num.length; i++){
+        if(typeof num[i] !== "number"){
+          areaCode=num.slice(0,3)
+          firstThree=num.slice(3,6)
+          lastFour=num.slice(6,11)
+        }
+      }
+      return `(${areaCode}) ${firstThree}-${lastFour}`
     }
+          
+
 
     // 👉 CHALLENGE 6 (bonus, NOT graded)
     function diceRolls() {
+      let rollOne=0
+      let rollTwo=0
+      let rollThree=0
+      let throws=0
 
+      while(true){
+        rollOne= Math.floor(Math.random() * 6) +1
+        rollTwo= Math.floor(Math.random() * 6) +1
+        rollThree= Math.floor(Math.random() * 6) +1
+        throws++
+        if(rollOne=== 6 && rollTwo=== 6 && rollThree=== 6){
+          break
+        }
+      }
+      return throws
     }
 
     // 🧪 DO NOT make any changes below this line ===================
